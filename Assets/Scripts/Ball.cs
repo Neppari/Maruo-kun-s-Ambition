@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public delegate void BallHitObjectEvent(string tag);
+    public event BallHitObjectEvent BallHitObject;
+
     private Rigidbody rb;
 
     [SerializeField] private float bounceMultiplier = default;
@@ -19,5 +22,7 @@ public class Ball : MonoBehaviour
     {
         var impulse = collision.impulse;
         rb.AddForce(impulse * bounceMultiplier, ForceMode.Impulse);
+
+        BallHitObject?.Invoke(tag);
     }
 }
