@@ -29,6 +29,24 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    [SerializeField] private GameObject prefab_Ball = default;
+
+    private Ball _ball;
+    private Ball Ball
+    {
+        get => _ball;
+        set
+        {
+            if (_ball == value) return;
+
+            if (_ball != null) _ball.BallHitObject -= HandleBallHit;
+
+            _ball = value;
+
+            if (_ball != null) _ball.BallHitObject += HandleBallHit;
+        }
+    }
+
     void Awake()
     {
         if (_instance == null)
@@ -41,4 +59,17 @@ public class GameManager : MonoBehaviour
             GameObject.Destroy(gameObject);
         }
     }
+
+    private void Start()
+    {
+        Ball = GameObject.Instantiate(prefab_Ball).GetComponent<Ball>();
+        Ball.transform.position = new Vector3(0, 2, -12);
+        Ball.GetComponent<Rigidbody>().AddForce(new Vector3(0, 4, 15), ForceMode.Impulse);
+    }
+
+    private void HandleBallHit(GameObject other)
+    {
+        Debug.Log($"Ball hit {other.name}");
+    }
+
 }
