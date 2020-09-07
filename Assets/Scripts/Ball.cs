@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -12,7 +13,8 @@ public class Ball : MonoBehaviour
 
     [SerializeField] private float bounceMultiplier = default;
     [SerializeField] private Vector3 startVelocity = default;
-    
+    [SerializeField] private ParticleSystem dustParticles = default;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -23,6 +25,8 @@ public class Ball : MonoBehaviour
     {
         var impulse = collision.impulse;
         rb.AddForce(impulse * bounceMultiplier, ForceMode.Impulse);
+
+        dustParticles.Play();
 
         BallHitObject?.Invoke(collision.gameObject);
     }
