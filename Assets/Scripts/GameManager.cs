@@ -69,7 +69,18 @@ public class GameManager : MonoBehaviour
 
     private void HandleBallHit(GameObject other)
     {
-        Debug.Log($"Ball hit {other.name}");
+        //Debug.Log($"Ball hit {other.name}");
+    }
+
+    public bool TrySwing(Swinger swinger, Vector3 force)
+    {
+        var distance = Vector3.Distance(swinger.transform.position, Ball.transform.position);
+        if (distance < swinger.MaxDistance)
+        {
+            Ball.AddForce(force);
+            return true;
+        }
+        else return false;
     }
 
 }

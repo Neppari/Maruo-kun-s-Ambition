@@ -30,4 +30,9 @@ public class Ball : MonoBehaviour
 
         BallHitObject?.Invoke(collision.gameObject);
     }
+
+    public void AddForce(Vector3 force)
+    {
+        rb.AddForce(force, ForceMode.Impulse);
+    }
 }

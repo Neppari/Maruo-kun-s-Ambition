@@ -562,6 +562,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 4631887394852532153, guid: 182831ab07b79e84383d85cecd8322da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7190949576823760993, guid: 182831ab07b79e84383d85cecd8322da,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -575,7 +580,7 @@ PrefabInstance:
     - target: {fileID: 7190949576823760993, guid: 182831ab07b79e84383d85cecd8322da,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.61
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 7190949576823760993, guid: 182831ab07b79e84383d85cecd8322da,
         type: 3}
